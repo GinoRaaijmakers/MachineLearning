@@ -1,0 +1,52 @@
+#!/bin/bash
+#SBATCH -n 10
+#SBATCH -c 16
+#SBATCH -t 72:00:00
+
+filename='Hao19'
+output_dir='/home/atgm2022/project'
+
+module load pre2019 Anaconda2
+source activate project
+
+cd $output_dir
+mkdir $filename
+
+cp preHaoDownloader.py $TMPDIR
+cd $TMPDIR
+
+python3 preHaoDownloader.py
+cat *_1.fastq > $filename.1.fastq
+cat *_2.fastq > $filename.2.fastq
+
+fastqc -q -t 16 $filename.1.fastq $filename.2.fastq
+sickle pe -g -t sanger -f $filename.1.fastq -r $filename.2.fastq -o $filename.FW.trimmed.fastq.gz -p $filename.RV.trimmed.fastq -s $filename.singles.fastq.gz
+gunzip $filename.FW.trimmed.fastq.gz $filename.RV.trimmed.fastq.gz
+fastqc -q -t 16 $filename.FW.trimmed.fastq $filename.RV.trimmed.fastq
+mv *.html $output_dir/$filename
+
+wget $TMPDIR "http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/analysisSet/hg19.p13.plusMT.full_analysis_set.fa.gz"
+gunzip hg19.p13.plusMT.full_analysis_set.fa.gz
+mv hg19.p13.plusMT.full_analysis_set.fa ref_genome.fa
+
+
+wget $TMPDIR "http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/analysisSet/hg19.p13.plusMT.full_analysis_set.fa.gz"
+gunzip hg19.p13.plusMT.full_analysis_set.fa.gz
+mv hg19.p13.plusMT.full_analysis_set.fa ref_genome.fa
+
+bowtie2-build -f -q --threads 16 ref_genome.fa hg19_index
+bowtie2 -X 1000 -q --threads 16 --quiet -x hg19_index -1 $filename.FW.trimmed.fastq -2 $filename.RV.trimmed.fastq -S $filename.aln.sam
+
+samtools sort -n -@ 16 -O sam $filename.aln.sam | samtools fixmate -m -@ 16 -O bam - $filename.fixmate.bam
+samtools sort -@ 16 -O bam -o $filename.sorted.bam $filename.fixmate.bam
+samtools markdup -@ 16 -r -S $filename.sorted.bam $filename.dedup.bam
+qualimap bamqc -bam $filename.dedup.bam
+samtools view -@ 16 -h -b -q 30 $filename.dedup.bam > $filename.q30.bam
+cp $filename.q30.bam $output_dir/$filename
+mv $filename.dedup_stats $output_dir/$filename
+
+samtools faidx ref_genome.fa
+bamtools index -in $filename.q30.bam
+samtools mpileup -u -g -f ref_genome.fa $filename.q30.bam | bcftools call -v -m -O z -o $filename.vcf.gz
+bcftools stats -F ref_genome.fa -s - $filename.vcf.gz > $filename.vcf.gz.stats
+mv $filename.vcf* $output_dir/$filename
