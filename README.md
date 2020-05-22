@@ -21,6 +21,7 @@ These delfi scripts are edited for the Cristiano dataset. While running the orig
 
 # Error with delfi scripts Cristiano
 In the 04 delfi script the script gives the followinf error message:
+
 Error: `by` can't contain join column `sample` which is missing from LHS
 Backtrace:
      █
@@ -36,11 +37,14 @@ Backtrace:
  10.           └─dplyr:::glubort(fmt_args(args), ..., .envir = .envir)
 Execution halted
 
-We th
+There is no 'sample' column in the data.
 
 # Error with delfi scripts Snyder and Hao
 In the 03 delfi script the script gives the following error message:
+
 Error in model.frame.defaul(formula = coverage ~ bias) :
   variable lenghts differ (found for 'bias')
 Calls: gc.correct ... loes -> eval -> eval -> <Anonymous>cd  -> model.frame.defaut
 Execution halted
+
+We think that because the scripts are not specifically made for this dataset, the parameters in the script are wrong.
