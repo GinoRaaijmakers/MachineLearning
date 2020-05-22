@@ -10,7 +10,7 @@ This dataset is also openly available in the NCBI SRA with project number PRJNA2
 To download the many files in this dataset, a small program called preHaoDownloader.py should be in the same directory as the main script. The main script uses the python script to iterate through all SRR numbers associated with the Hao dataset, after which they are concatenated and can be processed further.
 
 # Cristiano
-The Cristiano dataset does not have to be processed before the DELFI algorithm can be run, as this is the dataset which is specifically made for the script. These files are .bam files, whereas the Snyder and Hao datasets are fastq files.
+The Cristiano dataset does not have to be processed before the DELFI algorithm can be run, as this is the dataset which is specifically made for the script. These files are .bam files, whereas the Snyder and Hao datasets are fastq files. These files do contain personal DNA from both cancer and non-cancer patients.
 
 # Delfi original
 The original scripts used in the Cristiano paper are placed here. They are also found at https://github.com/cancer-genomics/delfi_scripts. 
