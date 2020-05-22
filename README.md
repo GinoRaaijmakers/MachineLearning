@@ -5,6 +5,7 @@ Previous research indicated that screening of fragmentation patterns of cfDNA is
 This dataset is openly available in the NCBI short read archive (SRA) with project number PRJNA291063. The bloodplasma of multiple people with the same type of cancer, or healthy patients, was pooled before it was sequenced. This made sure it does not have to abide by privacy limitations.
 At the top of this script the name, working directory and SRR number can be changed to personal specifications. This script downloads the data and processes it. At different stages during the processes quality assesments are provided to check all steps. After the processing is finished, a new directory is created where all the quality assesments and the bam file will be located.
 
+
 # Hao
 This dataset is also openly available in the NCBI SRA with project number PRJNA291063. This dataset contains the pooled DNA of cancer patients only, split into multiple small files.
 To download the many files in this dataset, a small program called preHaoDownloader.py should be in the same directory as the main script. The main script uses the python script to iterate through all SRR numbers associated with the Hao dataset, after which they are concatenated and can be processed further.
@@ -17,3 +18,29 @@ The original scripts used in the Cristiano paper are placed here. They are also 
 
 # Delfi edited Cristiano
 These delfi scripts are edited for the Cristiano dataset. While running the original scripts with the original dataset some problems occured, which are fixed in these scripts.
+
+# Error with delfi scripts Cristiano
+In the 04 delfi script the script gives the followinf error message:
+Error: `by` can't contain join column `sample` which is missing from LHS
+Backtrace:
+     █
+  1. ├─dplyr::inner_join(df.fr, master, by = c(sample = "WGS ID"))
+  2. └─dplyr:::inner_join.data.frame(df.fr, master, by = c(sample = "WGS ID"))
+  3.   ├─base::as.data.frame(...)
+  4.   ├─dplyr::inner_join(tbl_df(x), y, by = by, copy = copy, ...)
+  5.   └─dplyr:::inner_join.tbl_df(...)
+  6.     ├─dplyr::common_by(by, x, y)
+  7.     └─dplyr:::common_by.character(by, x, y)
+  8.       └─dplyr:::common_by.list(by, x, y)
+  9.         └─dplyr:::bad_args(...)
+ 10.           └─dplyr:::glubort(fmt_args(args), ..., .envir = .envir)
+Execution halted
+
+We th
+
+# Error with delfi scripts Snyder and Hao
+In the 03 delfi script the script gives the following error message:
+Error in model.frame.defaul(formula = coverage ~ bias) :
+  variable lenghts differ (found for 'bias')
+Calls: gc.correct ... loes -> eval -> eval -> <Anonymous>cd  -> model.frame.defaut
+Execution halted
