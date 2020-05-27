@@ -24,7 +24,6 @@ In the 04 delfi script the script gives the followinf error message:
 
 Error: `by` can't contain join column `sample` which is missing from LHS
 Backtrace:
-     █
   1. ├─dplyr::inner_join(df.fr, master, by = c(sample = "WGS ID"))
   2. └─dplyr:::inner_join.data.frame(df.fr, master, by = c(sample = "WGS ID"))
   3.   ├─base::as.data.frame(...)
