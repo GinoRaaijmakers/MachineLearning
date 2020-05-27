@@ -14,7 +14,7 @@ To download the many files in this dataset, a small program called preHaoDownloa
 The Cristiano dataset does not have to be processed before the DELFI algorithm can be run, as this is the dataset which is specifically made for the script. These files are .bam files, whereas the Snyder and Hao datasets are fastq files. These Cristiano .bam files do contain personal DNA from both cancer and non-cancer patients.
 
 # Delfi original
-The original scripts used in the Cristiano paper are placed on this page. They are also found at https://github.com/cancer-genomics/delfi_scripts. 
+The original scripts used in the Cristiano paper are placed in this repository. They are also found at the original repository at: https://github.com/cancer-genomics/delfi_scripts. 
 
 # Delfi edited Cristiano
 These delfi scripts are edited for the Cristiano dataset. While running the original scripts with the original dataset some problems occured, which are fixed in these scripts.
