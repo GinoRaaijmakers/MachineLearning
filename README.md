@@ -7,7 +7,7 @@ At the top of this script the name, working directory and SRR number can be chan
 
 
 # Hao
-This dataset is also openly available in the NCBI SRA with project number PRJNA291063. This dataset contains the pooled DNA of cancer patients only, split into multiple small files.
+This dataset is also openly available in the NCBI SRA with project number PRJNA383370. This dataset contains the pooled DNA of cancer patients only, split into multiple small files.
 To download the many files in this dataset, a small program called preHaoDownloader.py should be in the same directory as the main script. The main script uses the python script to iterate through all SRR numbers associated with the Hao dataset, after which they are concatenated and can be processed further.
 
 # Cristiano
