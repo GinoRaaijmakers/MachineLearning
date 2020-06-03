@@ -46,4 +46,4 @@ Error in model.frame.defaul(formula = coverage ~ bias) :
 Calls: gc.correct ... loes -> eval -> eval -> <Anonymous>cd  -> model.frame.defaut
 Execution halted
 
-Explanation for these errors could be that the the parameters in the script are wrong, because the scripts are not specifically made for this datasets. 
+Explanation for these errors could be that the the parameters in the script are wrong, because the scripts are not specifically made for these datasets. 
