@@ -23,7 +23,7 @@ The original scripts used in the Cristiano paper are placed in this repository. 
 These delfi scripts are edited for the Cristiano dataset. While running the original scripts with the original dataset some problems occured, which are fixed in these scripts.
 
 # Error with delfi scripts Cristiano
-In the 04 delfi script the script gives the followinf error message:
+In the 04 delfi script the script gives the following error message:
 
     Error: `by` can't contain join column `sample` which is missing from LHS
     Backtrace:
@@ -44,9 +44,9 @@ There is no 'sample' column in the data.
 # Error with delfi scripts Snyder and Hao
 In the 03 delfi script the script gives the following error message:
 
-Error in model.frame.defaul(formula = coverage ~ bias) :
-  variable lenghts differ (found for 'bias')
-Calls: gc.correct ... loes -> eval -> eval -> <Anonymous>cd  -> model.frame.defaut
-Execution halted
+    Error in model.frame.defaul(formula = coverage ~ bias) :
+      variable lenghts differ (found for 'bias')
+    Calls: gc.correct ... loes -> eval -> eval -> <Anonymous>cd  -> model.frame.defaut
+    Execution halted
 
 Explanation for these errors could be that the the parameters in the script are wrong, because the scripts are not specifically made for these datasets. 
