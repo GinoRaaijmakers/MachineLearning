@@ -25,19 +25,19 @@ These delfi scripts are edited for the Cristiano dataset. While running the orig
 # Error with delfi scripts Cristiano
 In the 04 delfi script the script gives the followinf error message:
 
-Error: `by` can't contain join column `sample` which is missing from LHS
-Backtrace:
-  1. ├─dplyr::inner_join(df.fr, master, by = c(sample = "WGS ID"))
-  2. └─dplyr:::inner_join.data.frame(df.fr, master, by = c(sample = "WGS ID"))
-  3.   ├─base::as.data.frame(...)
-  4.   ├─dplyr::inner_join(tbl_df(x), y, by = by, copy = copy, ...)
-  5.   └─dplyr:::inner_join.tbl_df(...)
-  6.     ├─dplyr::common_by(by, x, y)
-  7.     └─dplyr:::common_by.character(by, x, y)
-  8.       └─dplyr:::common_by.list(by, x, y)
-  9.         └─dplyr:::bad_args(...)
- 10.           └─dplyr:::glubort(fmt_args(args), ..., .envir = .envir)
-Execution halted
+    Error: `by` can't contain join column `sample` which is missing from LHS
+    Backtrace:
+    1. ├─dplyr::inner_join(df.fr, master, by = c(sample = "WGS ID"))
+    2. └─dplyr:::inner_join.data.frame(df.fr, master, by = c(sample = "WGS ID"))
+    3.   ├─base::as.data.frame(...)
+    4.   ├─dplyr::inner_join(tbl_df(x), y, by = by, copy = copy, ...)
+    5.   └─dplyr:::inner_join.tbl_df(...)
+    6.     ├─dplyr::common_by(by, x, y)
+    7.     └─dplyr:::common_by.character(by, x, y)
+    8.       └─dplyr:::common_by.list(by, x, y)
+    9.         └─dplyr:::bad_args(...)
+    10.           └─dplyr:::glubort(fmt_args(args), ..., .envir = .envir)
+    Execution halted
 
 There is no 'sample' column in the data.
 
